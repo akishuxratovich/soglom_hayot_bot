@@ -1,9 +1,12 @@
 import telebot
 from telebot import types
-from config import TOKEN, ADMIN_CHAT_ID
-from texts import texts
 import os
+from texts import texts
 from database import init_db, save_application, update_application_status, export_applications_to_csv
+
+# Получение переменных окружения из Render
+TOKEN = os.environ.get("TOKEN")
+ADMIN_CHAT_ID = int(os.environ.get("ADMIN_CHAT_ID"))
 
 bot = telebot.TeleBot(TOKEN)
 user_data = {}
